@@ -168,7 +168,8 @@ export default function App() {
   const painBg = appState.painValue <= 3 ? 'bg-green-500' : appState.painValue <= 6 ? 'bg-amber-500' : 'bg-red-500';
 
   const renderOggi = () => (
-    <div className="space-y-6 animate-in fade-in duration-500 slide-in-from-bottom-4 pb-4">
+    <div className="animate-in fade-in duration-500 slide-in-from-bottom-4 pb-4 flex flex-col md:flex-row flex-wrap gap-6 md:gap-8 items-start">
+      <div className="w-full md:w-[42%] space-y-6">
       {/* Scheda Riepilogo */}
       <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-3xl shadow-lg text-white transform transition-all hover:scale-[1.02]">
         <h2 className="text-xl font-bold mb-1 opacity-90">Programma Giornaliero</h2>
@@ -216,9 +217,9 @@ export default function App() {
           <span>Severo</span>
         </div>
       </div>
+      </div>
 
-      {/* Task List */}
-      <div className="space-y-3">
+      <div className="w-full md:flex-1 space-y-3">
         <h3 className="font-bold text-slate-800 px-2 flex items-center">
           <Activity className="w-5 h-5 mr-2 text-blue-600" />
           Da fare oggi
@@ -295,7 +296,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-amber-50 to-orange-50 p-5 rounded-2xl border border-amber-100 flex items-start shadow-sm mt-6">
+      <div className="w-full bg-gradient-to-r from-amber-50 to-orange-50 p-5 rounded-2xl border border-amber-100 flex items-start shadow-sm mt-6 md:mt-2">
         <AlertCircle className="w-6 h-6 text-amber-500 mt-0.5 flex-shrink-0 animate-pulse" />
         <div className="ml-3">
           <h4 className="text-sm font-bold text-amber-800">Regola d'oro costante</h4>
@@ -308,13 +309,14 @@ export default function App() {
   );
 
   const renderProtocollo = () => (
-    <div className="space-y-4 animate-in fade-in duration-500 slide-in-from-bottom-4">
+    <div className="animate-in fade-in duration-500 slide-in-from-bottom-4">
       <h2 className="text-xl font-bold text-slate-800 mb-2 px-1 flex items-center">
         <Stethoscope className="w-6 h-6 mr-2 text-indigo-600" />
         Linee Guida Mediche
       </h2>
-      <p className="text-sm text-slate-500 px-1 mb-4">Il tuo percorso terapeutico completo.</p>
+      <p className="text-sm text-slate-500 px-1 mb-6">Il tuo percorso terapeutico completo.</p>
       
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[
         { title: "Diagnosi", icon: Activity, color: "text-orange-500", bg: "bg-orange-50", items: ["Fasciopatia plantare con spina calcaneare", "Tendinosi inserzionale d'Achille"] },
         { title: "Gestione Dolore", icon: Thermometer, color: "text-blue-500", bg: "bg-blue-50", items: ["Crioterapia 15 min (mai a contatto diretto)", "Massaggio serale Arnica 90%"] },
@@ -342,6 +344,7 @@ export default function App() {
           </div>
         )
       })}
+      </div>
     </div>
   );
 
@@ -421,14 +424,16 @@ export default function App() {
           Trend Dolore
         </h2>
 
-        {history.length === 0 ? (
-          <div className="bg-white p-8 rounded-3xl text-center border border-slate-100 shadow-sm">
-            <TrendingUp className="w-12 h-12 text-slate-200 mx-auto mb-3" />
-            <p className="text-slate-500 text-sm">Nessun dato archiviato.<br/>Il grafico si aggiornerà in automatico domani.</p>
-          </div>
-        ) : (
-          <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">Ultimi giorni</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="w-full">
+            {history.length === 0 ? (
+              <div className="bg-white p-8 rounded-3xl text-center border border-slate-100 shadow-sm w-full">
+                <TrendingUp className="w-12 h-12 text-slate-200 mx-auto mb-3" />
+                <p className="text-slate-500 text-sm">Nessun dato archiviato.<br/>Il grafico si aggiornerà in automatico domani.</p>
+              </div>
+            ) : (
+              <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 w-full">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">Ultimi giorni</p>
             
             <div className="flex items-end justify-around h-40 gap-2 mb-2">
               {recentHistory.map((day, i) => {
@@ -454,8 +459,9 @@ export default function App() {
             </div>
           </div>
         )}
+        </div>
 
-        <div className="mt-8">
+        <div className="w-full">
           <h3 className="font-bold text-slate-800 px-2 mb-3">Storico Attività</h3>
           <div className="space-y-3">
             {[...history].reverse().slice(0, 5).map((day, i) => {
@@ -477,12 +483,13 @@ export default function App() {
             })}
           </div>
         </div>
+        </div>
       </div>
     );
   };
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans max-w-md mx-auto shadow-2xl overflow-hidden relative">
+    <div className="bg-[#f8fafc] min-h-screen font-sans max-w-md md:max-w-4xl lg:max-w-5xl mx-auto shadow-2xl overflow-hidden relative md:border-x border-slate-200">
       
       {/* Modale Tutorial */}
       {showTutorial && (
@@ -560,7 +567,7 @@ export default function App() {
       </main>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 w-full max-w-md bg-white border-t border-slate-100 pb-safe pt-2 px-3 flex justify-between z-50 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] rounded-t-3xl">
+      <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md md:max-w-4xl lg:max-w-5xl bg-white border-t border-slate-100 pb-safe pt-2 px-3 flex justify-between z-50 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] md:rounded-t-3xl">
         {[
           { id: 'oggi', icon: CheckCircle2, label: 'Oggi' },
           { id: 'protocollo', icon: FileText, label: 'Referto' },
