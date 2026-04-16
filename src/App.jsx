@@ -68,7 +68,13 @@ export default function App() {
           painValue: parsed.painValue || 5 // Mantieni l'ultimo dolore come base
         };
       }
-      return parsed;
+      // Re-idrata le icone per il giorno corrente: JSON rimpiazza le funzioni icona con {} 
+      const freshTasks = getTasksForWeek(parsed.currentWeek || 1);
+      const hydratedTasks = freshTasks.map(ft => {
+        const savedTask = parsed.tasks?.find(t => t.id === ft.id);
+        return savedTask ? { ...ft, doneCount: savedTask.doneCount } : ft;
+      });
+      return { ...parsed, tasks: hydratedTasks };
     }
     
     // Primissimo avvio
