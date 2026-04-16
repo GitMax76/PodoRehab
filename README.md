@@ -1,16 +1,58 @@
-# React + Vite
+# PodoRehab 🦶
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PodoRehab è una web app "Podologo Virtuale" pensata per accompagnare i pazienti durante il loro percorso di guarigione e riabilitazione podologica (es. fascite plantare, spina calcaneare).
 
-Currently, two official plugins are available:
+L'applicazione tiene traccia dei progressi giornalieri, ricorda le regole fondamentali di prevenzione e aggiorna automaticamente il protocollo riabilitativo col passare delle settimane.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Funzionalità principali
 
-## React Compiler
+**Tracciamento Giornaliero (Oggi)**: Una checklist dinamica delle attività terapeutiche da completare ogni giorno. Le spunte si resettano automaticamente a mezzanotte.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Progressione Automatica (Fasi)**: L'app calcola da quanto tempo l'utente ha iniziato la terapia. Alla Settimana 3, l'interfaccia passa automaticamente dalla fase acuta (es. ghiaccio e riposo) alla fase di riabilitazione attiva (es. esercizi di stretching ed eccentrici).
 
-## Expanding the ESLint configuration
+**Referto Medico Sempre a Portata**: Una sezione fissa dedicata alle regole d'oro e ai consigli strutturali (es. utilizzo delle tallonette in entrambe le scarpe, divieto di camminare scalzi).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Sistema di Salvataggio Locale**: I dati (data d'inizio terapia e checklist) vengono salvati nel localStorage del browser, garantendo che l'utente non perda i progressi alla chiusura della pagina web.
+
+**Anteprima "Avanti Veloce"**: Un comodo strumento integrato per testare i cambiamenti del protocollo nel tempo senza dover aspettare settimane reali.
+
+## 🚀 Tecnologie Utilizzate
+
+- **React** - Libreria per l'interfaccia utente
+- **Tailwind CSS** - Styling e animazioni fluide
+- **Lucide React** - Set di icone vettoriali moderne e leggere
+
+## 💻 Come eseguire il progetto localmente
+
+Clona questa repository:
+```bash
+git clone https://github.com/GitMax76/PodoRehab.git
+```
+
+Entra nella cartella del progetto:
+```bash
+cd PodoRehab
+```
+
+Installa le dipendenze:
+```bash
+npm install
+```
+
+Avvia il server di sviluppo:
+```bash
+npm run dev
+```
+
+## 🌐 Pubblicazione (Deployment)
+
+Essendo un'applicazione frontend-only, il deployment è gratuito e velocissimo. L'app usa `gh-pages` per il deployment.
+
+Per aggiornare la versione online (GitHub Pages) lancia questo comando dal terminale:
+```bash
+npm run deploy
+```
+
+Il comando prenderà il codice modificato, lo compilerà nella cartella `/dist/` e lo inoltrerà al branch `gh-pages` senza farti fare manovre complesse su git.
+
+Progettato e sviluppato per digitalizzare e supportare il percorso verso il benessere del piede.

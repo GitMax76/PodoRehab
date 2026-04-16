@@ -570,7 +570,7 @@ export default function App() {
       <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md md:max-w-4xl lg:max-w-5xl bg-white border-t border-slate-100 pb-safe pt-2 px-3 flex justify-between z-50 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] md:rounded-t-3xl">
         {[
           { id: 'oggi', icon: CheckCircle2, label: 'Oggi' },
-          { id: 'protocollo', icon: FileText, label: 'Referto' },
+          { id: 'protocollo', icon: FileText, label: 'Linee Guida' },
           { id: 'timeline', icon: Calendar, label: 'Fasi' },
           { id: 'trend', icon: TrendingUp, label: 'Trend' }
         ].map((tab) => {
